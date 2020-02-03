@@ -13,7 +13,3 @@ deploy:
     branch: master
 notifications:
   email: false
-"scripts": {
-  "build": "ng build --prod --base-href https://RouxJP.github.io/colleguesfront/", 
-
-}
