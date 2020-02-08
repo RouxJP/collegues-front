@@ -1,0 +1,34 @@
+<div class="row">
+
+  <div class="col-12 col-md-3">
+    <img [src]="col.photoUrl">
+  </div>
+
+  <div class="col-12 col-md-9">
+
+    <ul>
+      <li>Matricule : {{col.matricule}}</li>
+      <li>Nom : {{col.nom  | uppercase}}</li>
+      <li>Prenoms : {{col.prenoms | uppercase}}</li>
+      <li>Date de naissance {{col.dateDeNaissance | date:'dd/MM/yyyy'}}</li>
+
+      <li *ngIf="!modeEdition; else modeSaisie"> Email : {{col.email}}</li>
+      <ng-template #modeSaisie>
+        <!-- let saisieEmail = <input> -->
+        <li>Email : <input type="text" [value]="col.email" #saisieEmail (change)="emailChange(saisieEmail.value, saisiePhoto)" (mouseover)="onMouse()"></li>
+        <li>Photo url : <input type="text" [value]="col.photoUrl" #saisiePhoto (change)="urlChange(saisiePhoto.value)"></li>
+      </ng-template>
+
+    </ul>
+
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col offset-md-3">
+    <button class="btn btn-link" [hidden]="modeEdition" (click)="creerCollegue()">Créer un nouveau collègue</button>
+    <button class="btn btn-primary" [hidden]="modeEdition" (click)="modifierCollegue()">Modifier</button>
+    <button class="btn btn-primary" [hidden]="!modeEdition" (click)="validerCollegue()">Valider</button>
+  </div>
+</div>
