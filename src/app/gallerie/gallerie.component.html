@@ -1,0 +1,12 @@
+
+<div class="row">
+
+  <div class="col-3" *ngFor="let pc of listePhotosCollegues | async">
+    <a routerLink="/detailCollegue/{{pc.matricule}}">
+      <img [src]="pc.photUrl" class="img-fluid">
+    </a>
+
+  </div>
+
+</div>
+

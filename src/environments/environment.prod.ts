@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  backendUrl: 'https://btoulemonde-collegues-api.herokuapp.com/collegues'
 };

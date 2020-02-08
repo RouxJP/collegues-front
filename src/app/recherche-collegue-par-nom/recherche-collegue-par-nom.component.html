@@ -1,7 +1,7 @@
 <div class="row">
 
   <div class="col">
-    Recherche par nom  : 
+    Recherche par nom :
   </div>
 
   <div class="col">
@@ -13,12 +13,12 @@
   </div>
 
 </div>
+
 <div class="row">
 
   <div class="col">
   <ul>
-    <!-- for (String matriculeCourant : listeMatricules) -->
-    <li *ngFor="let m of listeMatricules">{{m}}</li>
+    <li *ngFor="let matricule of listeMatricules | async">{{ matricule }}</li>
   </ul>
   </div>
 </div>

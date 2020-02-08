@@ -1,1 +1,3 @@
-export const listeMats          = ['mat1', 'mat2', 'mat4'];
+
+export let matriculeMock = ['azerty', 'querty', 'blablabla', 'blobloblo'];
+

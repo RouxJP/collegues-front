@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { listeMats } from '../mock/matricules.mock';
-import { colMockCourant } from '../mock/collegue.mock';
-import { Collegue } from '../models/Collegue';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Collegue } from '../models/Collegue';
+import { Observable, Subject } from 'rxjs';
+import { environment } from '../../environments/environment';
+import { PhotoCollegue } from '../photo-collegue';
 
 
-const urlPosts = 'https://btoulemonde-collegues-api.herokuapp.com/collegues?nom=';
+const url = environment.backendUrl;
 
 @Injectable({
   providedIn: 'root'
@@ -15,20 +14,24 @@ const urlPosts = 'https://btoulemonde-collegues-api.herokuapp.com/collegues?nom=
 
 export class DataService {
 
-    constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
+  rechercherMatriculeParNom(nom: string): Observable<string[]> {
 
-    rechercherParNom( nom: string): Observable<String[]> {
- 
-      const obs$: Observable<String[]> = this.httpClient.get<String[]>(urlPosts + nom);
-  
-      return obs$;      
-
-    }
-      
-    recupererCollegueCourant():Collegue{
-      // TODO retourner le collègue fictif à partir du fichier`src/app/mock/collegues.mock.ts`.
-      return colMockCourant ;      
-    }
+    return this.httpClient.get<string[]>(url + '?nom=' + nom);
 
   }
+
+  ajouterCollegue(newCollegue: Collegue): Observable<void> {
+    return this.httpClient.post<void>(url, newCollegue);
+  }
+
+  rechercherDesPhotos(): Observable<PhotoCollegue[]> {
+    return this.httpClient.get<PhotoCollegue[]>(url + '/photos');
+  }
+
+  rechercherParMatricule(matricule: string): Observable<Collegue> {
+    return this.httpClient.get<Collegue>(url + '/' + matricule);
+  }
+
+}

@@ -1,23 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { listeMats } from '../mock/matricules.mock';
+import { Component, OnInit, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DataService } from '../services/data.service';
+
 
 
 @Component({
   selector: 'app-recherche-collegue-par-nom',
-  templateUrl: './recherche-collegue-par-nom.component.html'
+  templateUrl: './recherche-collegue-par-nom.component.html',
+  styleUrls: ['./recherche-collegue-par-nom.component.css']
 })
+
+
 export class RechercheCollegueParNomComponent implements OnInit {
 
-  listeMatricules: Observable<String[]>;
 
-  constructor() { }
+  listeMatricules: Observable<string[]>;
 
-  ngOnInit() {
-  }
+  constructor(private dataService: DataService) { }
+
+  modeRechercher = false;
+
 
   rechercherParNom(nom: string) {
-    console.log('saisie=', nom);
+    this.modeRechercher = true;
+    this.listeMatricules = this.dataService.rechercherMatriculeParNom(nom);
+  }
+
+  ngOnInit() {
 
   }
 

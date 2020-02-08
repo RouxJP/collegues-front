@@ -1,56 +1,46 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Collegue } from '../models/Collegue';
 
+
 @Component({
   selector: 'app-collegue',
-  templateUrl: './collegue.component.html'
+  templateUrl: './collegue.component.html',
+  styleUrls: ['./collegue.component.css']
 })
+
+
 export class CollegueComponent implements OnInit {
 
-  // <app-collegue [col]="dddd"></app-collegue>
   @Input() col: Collegue;
 
   modeEdition = false;
+  emailSaisie: string;
+  photoSaisie: string;
 
-  prenomSaisie:string;
-  emailSaisie:string;
-  urlSaisie:string;
+  constructor( ) { }
 
-  constructor() { }
+  modifierCollegue() {
 
-  ngOnInit() {
-  }
-
-  prenomChange(prenomSaisie :string) {
-    this.prenomSaisie = prenomSaisie;
-  }
-
-  emailChange( emailSaisi :string, saisiePhoto: HTMLInputElement) {
-    this.emailSaisie = emailSaisi;
-    saisiePhoto.focus();
-    //console.log(emailSaisi)
-  }
-
-  urlChange( urlSaisie :string) {
-    this.urlSaisie = urlSaisie ;
-  }
-
-  modifierCollegue(){
     this.modeEdition = true;
-
-    console.log('Modif');
-  }
-
-  onMouse() {
-    console.log('souris!!!')
-  }
-
-  validerCollegue() {
-    this.modeEdition = false;
+    console.log('Modification du collègue');
   }
 
   creerCollegue() {
-    console.log('Creation');
+    console.log('Création d’un nouveau collègue');
+  }
+  emailChange(valeurSaisie: string) {
+    this.emailSaisie = valeurSaisie;
+  }
+  photoChange(adresseSaisie: string){
+    this.photoSaisie = adresseSaisie;
+  }
+
+  validerLEdition() {
+    this.modeEdition = false;
+    console.log('Validation du collègue');
+  }
+
+  ngOnInit() {
   }
 
 }
