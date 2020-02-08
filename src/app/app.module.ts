@@ -6,13 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { RechercheCollegueParNomComponent } from './recherche-collegue-par-nom/recherche-collegue-par-nom.component';
 import { CreerCollegueComponent } from './creer-collegue/creer-collegue.component';
-import { MenuComponentComponent } from './menu-component/menu-component.component';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { AccueilComponent } from './accueil/accueil.component';
 import { GallerieComponent } from './gallerie/gallerie.component';
 import { AProposComponent } from './apropos/apropos.component';
 import { DetailCollegueComponent } from './detail-collegue/detail-collegue.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -30,11 +31,12 @@ const ROUTES: Routes = [
     CollegueComponent,
     RechercheCollegueParNomComponent,
     CreerCollegueComponent,
-    MenuComponentComponent,
     AccueilComponent,
     GallerieComponent,
     AProposComponent,
-    DetailCollegueComponent
+    DetailCollegueComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
