@@ -18,7 +18,7 @@ export class RechercheCollegueParNomComponent implements OnInit {
 
   rechercherParNom(nom: string) {
     console.log('saisie=', nom);
-    this.listeMatricules = listeMats;
+
   }
 
 }
